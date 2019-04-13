@@ -7,7 +7,8 @@ Set the port to listen on in the .env file.  Default is 4001.
 
 After downloading run: 
 
-npm start
+npm install
+gi
 npm audit fix
 
 To run:
