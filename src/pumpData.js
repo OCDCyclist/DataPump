@@ -1,10 +1,10 @@
 const axios = require("axios");
 const randomWords = require("random-words");
 
-pumpData = async (count, time) => {
-    let payload = createPayload( count, time);
+pumpData = async ( tartgetURL, sourceName,  count, time) => {
+    let payload = createPayload( sourceName, count, time);
     axios
-        .post("http://localhost:4100/add", payload)
+        .post( tartgetURL, payload)
         .then(response => {
             //console.log(`Added ${this.count} ${response}`);
         })
@@ -13,19 +13,19 @@ pumpData = async (count, time) => {
         });
 };
 
-const createPayload = (count, time)=>{
+const createPayload = (sourceName, count, time)=>{
     switch( count % 3){
         case 0:{
-            const thisKey = randomWords({ exactly: 2, join: "-" });
+            const thisKey = randomWords({ exactly: 5, join: "-" });
             return [
                 {
-                    id: `${time}.${count}`,
+                    id: `${time}.${count}.${sourceName}`,
                     key: thisKey,
                     words: randomWords({ exactly: 5, join: " " }),
                     crud: "insert"
                 },
                 {
-                    id: `${time}.${count+1}`,
+                    id: `${time}.${count+1}.${sourceName}`,
                     key: thisKey,
                     words: randomWords({ exactly: 6, join: " " }),
                     crud: "update"
@@ -34,16 +34,16 @@ const createPayload = (count, time)=>{
             break;
         }
         case 1:{
-            const thisKey = randomWords({ exactly: 2, join: "-" });
+            const thisKey = randomWords({ exactly: 5, join: "-" });
             return [
                 {
-                    id: `${time}.${count}`,
+                    id: `${time}.${count}.${sourceName}`,
                     key: thisKey,
-                    words: randomWords({ exactly: 5, join: " " }),
+                    words: randomWords({ exactly: 6, join: " " }),
                     crud: "insert"
                 },
                 {
-                    id: `${time}.${count+1}`,
+                    id: `${time}.${count+1}.${sourceName}`,
                     key: thisKey,
                     crud: "delete"
                 }
@@ -54,9 +54,9 @@ const createPayload = (count, time)=>{
         case 3:{
             return [
                 {
-                  id: `${time}.${count}`,
-                  key: randomWords({ exactly: 2, join: "-" }),
-                  words: randomWords({ exactly: 5, join: " " }),
+                  id: `${time}.${count}.${sourceName}`,
+                  key: randomWords({ exactly: 5, join: "-" }),
+                  words: randomWords({ exactly: 6, join: " " }),
                   crud: "insert"
                 }
             ];

@@ -33,8 +33,14 @@ class DataPump {
     this.setState( {rate: rate})
     this.intervalID = setInterval(async () => {
       this.count += 1;
-      this.pumpDataFunction( this.count, (new Date()).getTime() );
+      this.pumpDataFunction( this.state.tartgetURL, this.state.sourceName, this.count, (new Date()).getTime() );
     }, this.state.rate);
+    return this.getState();
+  }
+
+  SendOne() {
+    this.count += 1;
+    this.pumpDataFunction( this.state.tartgetURL, this.state.sourceName, this.count, (new Date()).getTime() );
     return this.getState();
   }
 
