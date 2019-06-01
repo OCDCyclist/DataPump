@@ -13,6 +13,8 @@ const portListen = Number.isSafeInteger(whichListen) ? whichListen : 3000;
 const whichSend = 0 || process.argv.length > 3 ? Number(process.argv[3]) : 4000;
 const portTarget = Number.isSafeInteger(whichSend) ? whichSend : 4000;
 
+console.log( `portListen=${portListen} and portTarget=${portTarget}`);
+
 app.targetURL = process.env.TARGET.replace("xxPORTxx", portTarget);
 app.pumpName = `App ${portListen}`;
 app.dataPump = new DataPump( app.pumpName, app.targetURL, pumpData);

@@ -10,7 +10,7 @@ class DataPump {
     };
     this.count = 0;
     this.pumpDataFunction = pumpDataFunction;
-    this. intervalID = 0;
+    this.intervalID = 0;
   }
 
   getState() {
@@ -31,7 +31,7 @@ class DataPump {
 
   Start(rate) {
     this.setState( {rate: rate})
-    this.intervalID = setInterval(async () => {
+    this.intervalID = setInterval( () => {
       this.count += 1;
       this.pumpDataFunction( this.state.tartgetURL, this.state.sourceName, this.count, (new Date()).getTime() );
     }, this.state.rate);

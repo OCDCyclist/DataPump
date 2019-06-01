@@ -9,7 +9,7 @@ pumpData = async ( tartgetURL, sourceName,  count, time) => {
             //console.log(`Added ${this.count} ${response}`);
         })
         .catch(function(error) {
-            console.log(`pumpData error for id ${count}: ${error.message}`);
+            console.log(`pumpData error targeting ${tartgetURL} for id ${count}: ${error.message}`);
         });
 };
 

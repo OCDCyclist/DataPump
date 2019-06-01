@@ -28,6 +28,11 @@ app.get('/start/:rate', (req, res) => {
     }
 });
 
+app.get('/state', (req, res) => {
+    res.
+    status(200).send(app.dataPump.getState());
+});
+
 app.get('/stop', (req, res) => {
     res.status(200).send(app.dataPump.Stop());
 });
